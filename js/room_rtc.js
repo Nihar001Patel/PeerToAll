@@ -22,7 +22,7 @@ if(!roomId){
 
 let displayName = sessionStorage.getItem('display_name')
 if(!displayName){
-    window.location = 'lobby.html'
+    window.location = 'index.html'
 }
 
 let localTracks = []
@@ -32,17 +32,17 @@ let localScreenTracks;
 let sharingScreen = false;
 
 let joinRoomInit = async () => {
-    rtmClient = await AgoraRTM.createInstance(APP_ID)
-    await rtmClient.login({uid,token})
+    // rtmClient = new AgoraRTM.RTM(APP_ID, uid)
+    // await rtmClient.login({uid,token})
 
-    await rtmClient.addOrUpdateLocalUserAttributes({'name':displayName})
+    // await rtmClient.addOrUpdateLocalUserAttributes({'name':displayName})
 
-    channel = await rtmClient.createChannel(roomId)
-    await channel.join()
+    // channel = await rtmClient.createStreamChannel(roomId)
+    // await channel.join()
 
-    channel.on('MemberJoined', handleMemberJoined)
-    channel.on('MemberLeft', handleMemberLeft)
-    channel.on('ChannelMessage', handleChannelMessage)
+    // channel.on('MemberJoined', handleMemberJoined)
+    // channel.on('MemberLeft', handleMemberLeft)
+    // channel.on('ChannelMessage', handleChannelMessage)
 
     getMembers()
     addBotMessageToDom(`Welcome to the room ${displayName}! 👋`)
